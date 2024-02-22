@@ -8,13 +8,12 @@ import com.montonurb.emporio_pacha.models.Cliente;
 
 @Component
 @TipoNotificador(NivelUrgencia.URGENTE)
-@Profile("producao")
-public class NotificadorEmail implements Notificador {
-    
+@Profile("desenvolvimento")
+public class NotificadorEmailMock implements Notificador {
+
     @Override
     public void notificar(Cliente cliente, String mensagem) {
-        System.out.printf("Notificando %s através do e-mail %s: %s",
+        System.out.printf("MOCK: Notificando %s através do e-mail %s: %s",
                 cliente.getNome(), cliente.getEmail(), mensagem);
     }
 }
- 
