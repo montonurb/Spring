@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,4 +56,16 @@ public class PrimeiroController {
     public String metodoComListersHeaders(@RequestHeader Map<String, String> headers) {
         return "Informando os parametros: " + headers;
     }
+
+    @GetMapping("/meuRetorno/{id}")
+    public ResponseEntity<Object> getMethodName(@PathVariable Long id) {
+        
+        Usuario usuario = new Usuario("Bruno Monteiro", "12345");
+
+        if(id > 5) {
+            return ResponseEntity.status(HttpStatus.OK).body(usuario);
+        }
+        return ResponseEntity.badRequest().body("Número é menor que 5.");
+    }
+    
 }
