@@ -1,4 +1,4 @@
-package br.com.montonurb.gestao_vagas.modules.candidate.controllers;
+package br.com.montonurb.gestao_vagas.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,10 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.montonurb.gestao_vagas.exceptions.UserFoundException;
-import br.com.montonurb.gestao_vagas.modules.candidate.CandidateEntity;
-import br.com.montonurb.gestao_vagas.modules.candidate.CandidateRepository;
-import br.com.montonurb.gestao_vagas.modules.candidate.services.CandidateService;
+import br.com.montonurb.gestao_vagas.models.CandidateEntity;
+import br.com.montonurb.gestao_vagas.services.CandidateService;
 import jakarta.validation.Valid;
 
 @RestController
@@ -26,6 +24,5 @@ public class CandidateController {
         } catch (Exception error) {
             return ResponseEntity.badRequest().body(error.getMessage());
         }
-
     }
 }

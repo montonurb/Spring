@@ -1,6 +1,5 @@
-package br.com.montonurb.gestao_vagas.modules.candidate;
+package br.com.montonurb.gestao_vagas.models;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -16,20 +15,20 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
-@Entity
-public class CandidateEntity {
+@Entity(name = "company")
+public class CompanyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String name;
+    private String nome;
     @NotBlank()
     @Pattern(regexp = "\\S+", message = "O campo [username] não deve conter espaço.")
     private String username;
     @Email(message = "O campo deve conter um e-mail válido!")
     private String email;
     private String password;
+    private String website;
     private String description;
-    private String curriculum;
     @CreationTimestamp
     private LocalDateTime createdAt;
 }
